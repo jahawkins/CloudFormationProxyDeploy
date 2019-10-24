@@ -1,0 +1,42 @@
+[
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "Mordor_Personal"
+  },
+  {
+    "ParameterKey": "NetworkStackName",
+    "ParameterValue": "ProxyNetworkStack"
+  },
+  {
+    "ParameterKey": "LocalAdminPassword",
+    "ParameterValue": "IJustMadeUpThisPassw0rd"
+  },  
+  {
+    "ParameterKey": "DomainDNSName",
+    "ParameterValue": "proxytestingnetwork.com"
+  },
+  {
+    "ParameterKey": "DCStackName",
+    "ParameterValue": "MordorWindowsDCStack"
+  },
+  {
+    "ParameterKey": "WorkstationInstanceType",
+    "ParameterValue": "t2.medium"
+  },
+  {
+    "ParameterKey": "Win10NetBIOSName",
+    "ParameterValue": "WIN10"
+  },
+  {
+    "ParameterKey": "Win10PrivateIP",
+    "ParameterValue": "172.18.39.106"
+  },
+  {
+    "ParameterKey": "Win10DefaultUser",
+    "ParameterValue": "user"
+  },
+  {
+    "ParameterKey": "Win10DefaultPassword",
+    "ParameterValue": "S@l@m3!123"
+  }
+]
