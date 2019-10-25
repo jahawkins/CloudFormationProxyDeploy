@@ -93,12 +93,12 @@
                 ]
             }
         },
-        "Win10Workstation" : {
+        "WIN10" : {
             "Type" : "AWS::EC2::Instance",
             "Metadata": {
                 "AWS::CloudFormation::Init": {
                     "configSets": {
-                        "config": [ "00-setup", "01-install", "02-finalize" ]
+                        "config": [ "00-setup", "02-finalize" ]
                     },
                     "00-setup": {
                         "files": {
@@ -130,7 +130,7 @@
                                 }
                             },
                             "c:\\cfn\\scripts\\Prepare-Box.ps1": {
-                                "source": "https://github.com/jahawkins/CloudFormationProxyDeploy/raw/master/cfn-files/Prepare-Box.ps1"
+                                "source": "https://raw.githubusercontent.com/jahawkins/CloudFormationProxyDeploy/master/cfn-files/Prepare-Box.ps1"
                             },
                             "c:\\cfn\\scripts\\Set-StaticIP.ps1": {
                                 "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Set-StaticIP.ps1"
@@ -249,7 +249,7 @@
     "Outputs" : {
         "Win10PublicIPAddress" : {
             "Description" : "Public IP address of the new Workstation EC2 instance",
-            "Value" : { "Fn::GetAtt" : [ "Win10Workstation", "PublicIp" ] },
+            "Value" : { "Fn::GetAtt" : [ "WIN10", "PublicIp" ] },
             "Export" : { "Name" : {"Fn::Sub": "${AWS::StackName}-Win10PrivateIp"}}
         }
     }
