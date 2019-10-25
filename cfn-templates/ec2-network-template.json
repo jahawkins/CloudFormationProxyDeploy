@@ -88,7 +88,7 @@
                 "RouteTableId" : { "Ref" : "mainRouteTable" }
             }
         },
-        "SquidSecurityGroupAllOutbound" : {
+        "SquidBaseSecurityGroup" : {
             "Type" : "AWS::EC2::SecurityGroup",
             "Properties" : {
                 "GroupDescription" : "Enable access via port 22 from your public IP for management, internal communications, and outbound connections to anywhere",
@@ -160,9 +160,9 @@
             "Value" :  { "Ref" : "PublicSubnet" },
             "Export" : { "Name" : {"Fn::Sub": "${AWS::StackName}-SubnetID" }}
         },
-        "UbuntuBaseSecurityGroup" : {
+        "SquidBaseSecurityGroup" : {
             "Description" : "The security group ID to use for Ubuntu servers",
-            "Value" :  { "Fn::GetAtt" : ["UbuntuBaseSecurityGroup", "GroupId"] },
+            "Value" :  { "Fn::GetAtt" : ["SquidBaseSecurityGroup", "GroupId"] },
             "Export" : { "Name" : {"Fn::Sub": "${AWS::StackName}-Squid-SecurityGroupID" }}
         },
         "WindowsBaseSecurityGroup" : {

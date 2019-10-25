@@ -79,6 +79,6 @@ Write-Host "Setting WDigest to use logoncredential.."
 Set-ItemProperty -Force -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" -Name "UseLogonCredential" -Value "1"
 
 # Setting the proxy server
-Write-Host "Setting the proxy server"
-Set-ItemProperty -Force -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "EnableProxy" -Value "1"
-Set-ItemProperty -Force -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer" -Value "http://$ProxyIP:3128"
+#Write-Host "Setting the proxy server"
+#Set-ItemProperty -Force -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "EnableProxy" -Value "1"
+#Set-ItemProperty -Force -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer" -Value "http://$ProxyIP:3128"

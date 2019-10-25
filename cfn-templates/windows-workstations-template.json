@@ -60,13 +60,21 @@
             "MinLength" : "5",
             "NoEcho" : "true"
         },
+        "SquidStackName": {
+            "Description": "Name of the active CloudFormation stack that contains the Domain Controller resources, such as the subnet and security group, that will be used in this stack.",
+            "Type": "String",
+            "MinLength" : 1,
+            "MaxLength" : 255,
+            "AllowedPattern" : "^[a-zA-Z][-a-zA-Z0-9]*$",
+            "Default" : "ProxyWindowsStack"
+        },
         "DomainDNSName" : {
             "Description" : "Fully qualified domain name (FQDN) of the forest root domain e.g. example.com.",
             "Type" : "String",
             "AllowedPattern" : "[a-zA-Z0-9\\-]+\\..+",
             "MaxLength" : "25",
             "MinLength" : "2"
-        },
+        }
     },
     "Mappings" : {
         "WindowsWorkstationAWSRegionArch2AMI" : {
@@ -74,7 +82,7 @@
         }
     },
     "Resources" : {
-        "Win10Workstation" : {
+        "Win10WindowsENI" : {
             "Type" : "AWS::EC2::NetworkInterface",
             "Properties" : {
                 "GroupSet": [{ "Fn::ImportValue" :  {"Fn::Sub": "${NetworkStackName}-Windows-SecurityGroupID" } }],
@@ -122,22 +130,13 @@
                                 }
                             },
                             "c:\\cfn\\scripts\\Prepare-Box.ps1": {
-                                "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Prepare-Box.ps1"
+                                "source": "https://github.com/jahawkins/CloudFormationProxyDeploy/raw/master/cfn-files/Prepare-Box.ps1"
                             },
                             "c:\\cfn\\scripts\\Set-StaticIP.ps1": {
                                 "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Set-StaticIP.ps1"
                             },
                             "c:\\cfn\\scripts\\Rename-Computer.ps1": {
                                 "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Rename-Computer.ps1"
-                            },
-                            "c:\\cfn\\scripts\\Set-Auditing.ps1": {
-                                "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Set-Auditing.ps1"
-                            },
-                            "c:\\cfn\\scripts\\Install-Endpoint-Agent.ps1": {
-                                "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Install-Endpoint-Agent.ps1"
-                            },
-                            "c:\\cfn\\scripts\\Join-Domain.ps1": {
-                                "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Join-Domain.ps1"
                             }
                         },
                         "services": {
@@ -159,7 +158,7 @@
                                         "",
                                         [
                                             "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Prepare-Box.ps1",
-                                            " -LocalAdminPassword ", { "Ref" : "LocalAdminPassword" }
+                                            " -LocalAdminPassword ", { "Ref" : "LocalAdminPassword" }, " -ProxyIP 127.0.0.1"
                                         ]
                                     ]
                                 },
@@ -171,7 +170,7 @@
                                         "",
                                         [
                                             "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Set-StaticIP.ps1",
-                                            " -ServerAddresses ", { "Fn::ImportValue" : {"Fn::Sub": "${SquidStackName}-SquidPrivateIp" } }
+                                            " -ServerAddresses 8.8.8.8"
                                         ]
                                     ]
                                 },
@@ -206,7 +205,7 @@
                 }
             },
             "Properties" : {
-                "InstanceType" : { "Ref" : "WorkstationInstanceType" },
+                "InstanceType" : { "Ref" : "Win10InstanceType" },
                 "ImageId" : { "Fn::FindInMap" : [ "WindowsWorkstationAWSRegionArch2AMI", { "Ref" : "AWS::Region" }, "HVM64" ] },
                 "KeyName" : { "Ref" : "KeyName" },
                 "NetworkInterfaces" : [
@@ -245,7 +244,8 @@
                     "Timeout": "PT20M"
                 }
             }
-        },
+        }
+    },
     "Outputs" : {
         "Win10PublicIPAddress" : {
             "Description" : "Public IP address of the new Workstation EC2 instance",

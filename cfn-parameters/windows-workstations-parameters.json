@@ -16,11 +16,11 @@
     "ParameterValue": "proxytestingnetwork.com"
   },
   {
-    "ParameterKey": "DCStackName",
-    "ParameterValue": "MordorWindowsDCStack"
+    "ParameterKey": "SquidStackName",
+    "ParameterValue": "ProxyWindowsStack"
   },
   {
-    "ParameterKey": "WorkstationInstanceType",
+    "ParameterKey": "Win10InstanceType",
     "ParameterValue": "t2.medium"
   },
   {
@@ -33,7 +33,7 @@
   },
   {
     "ParameterKey": "Win10DefaultUser",
-    "ParameterValue": "user"
+    "ParameterValue": "proxyuser"
   },
   {
     "ParameterKey": "Win10DefaultPassword",
