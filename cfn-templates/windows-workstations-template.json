@@ -158,7 +158,7 @@
                                         "",
                                         [
                                             "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Prepare-Box.ps1",
-                                            " -LocalAdminPassword ", { "Ref" : "LocalAdminPassword" }, " -ProxyIP 127.0.0.2"
+                                            " -LocalAdminPassword ", { "Ref" : "LocalAdminPassword" }, " -ProxyIP 127.0.0.2 | Out-file C:\\log.txt"
                                         ]
                                     ]
                                 },
