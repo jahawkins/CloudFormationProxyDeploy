@@ -82,6 +82,6 @@ Set-ItemProperty -Force -Path "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityPr
 Write-Host "Setting the proxy server"
 $ProxyHost = "http://" + $ProxyIP + ":3128"
 Set-ItemProperty -Force -Path "HKLM:\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxySettingsPerUser" -Value 0 -Type dword
-Set-ItemProperty -Force -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyEnable" -Value 1 -Type dword
-Set-ItemProperty -Force -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect" -Value 0 -Type dword
-Set-ItemProperty -Force -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer" -Value $ProxyHost
+Set-ItemProperty -Force -Path "HKLM:\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyEnable" -Value 1 -Type dword
+Set-ItemProperty -Force -Path "HKLM:\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect" -Value 0 -Type dword
+Set-ItemProperty -Force -Path "HKLM:\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer" -Value $ProxyHost
