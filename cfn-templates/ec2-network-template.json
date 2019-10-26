@@ -139,7 +139,7 @@
                     }
                 ],
                 "SecurityGroupEgress" : [
-                    {
+{
                         "IpProtocol" : "-1",
                         "FromPort" : "0",
                         "ToPort" : "0",

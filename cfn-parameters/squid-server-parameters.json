@@ -5,26 +5,14 @@
   },
   {
     "ParameterKey": "NetworkStackName",
-    "ParameterValue": "MordorNetworkStack"
+    "ParameterValue": "ProxyNetworkStack"
   },
   {
-    "ParameterKey": "RTOInstanceType",
+    "ParameterKey": "SquidInstanceType",
     "ParameterValue": "t2.medium"
   }, 
   {
-    "ParameterKey": "RTOPrivateIP",
+    "ParameterKey": "SquidPrivateIP",
     "ParameterValue": "172.18.39.8"
-  }, 
-  {
-    "ParameterKey": "RTODefaultC2",
-    "ParameterValue": "covenant"
-  }, 
-  {
-    "ParameterKey": "CalderaAdminName",
-    "ParameterValue": "wardog"
-  }, 
-  {
-    "ParameterKey": "CalderaAdminPassword",
-    "ParameterValue": "B3tt3r!"
   }
 ]
