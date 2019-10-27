@@ -137,6 +137,9 @@
                             },
                             "c:\\cfn\\scripts\\Rename-Computer.ps1": {
                                 "source": "https://raw.githubusercontent.com/hunters-forge/Blacksmith/master/aws/mordor/cfn-files/scripts/default/Rename-Computer.ps1"
+                            },
+                            "c:\\cfn\\scripts\\Configure-Proxy.ps1": {
+                                "source": "https://raw.githubusercontent.com/jahawkins/CloudFormationProxyDeploy/master/cfn-files/Configure-Proxy.ps1"
                             }
                         },
                         "services": {
@@ -176,7 +179,19 @@
                                 },
                                 "waitAfterCompletion": "10"
                             },
-                            "c-rename-computer-reboot": {
+                            "c-configure-proxy": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Configure-Proxy.ps1",
+                                            " -ProxyIP 127.0.0.1 "
+                                        ]
+                                    ]
+                                },
+                                "waitAfterCompletion": "10"
+                            },
+                            "d-rename-computer-reboot": {
                                 "command": {
                                     "Fn::Join": [
                                         "",
