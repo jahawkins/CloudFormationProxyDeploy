@@ -203,6 +203,18 @@
                                     ]
                                 },
                                 "waitAfterCompletion": "forever"
+                            },
+                            "e-set-proxy": {
+                                "command": {
+                                    "Fn::Join": [
+                                        "",
+                                        [
+                                            "powershell.exe -ExecutionPolicy Bypass -Command c:\\cfn\\scripts\\Configure-Proxy.ps1",
+                                            " -ProxyIP 127.0.0.2 >> C:\\log.txt"
+                                        ]
+                                    ]
+                                },
+                                "waitAfterCompletion": "0"
                             }
                             
                         }
