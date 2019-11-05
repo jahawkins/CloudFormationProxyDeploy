@@ -7,10 +7,7 @@
 [CmdletBinding()]
 param (
     [Parameter(Mandatory=$true)]
-    [String]$LocalAdminPassword,
-    [Parameter(Mandatory=$true)]
     [String]$ProxyIP
-
 )
 
 # Setting the proxy server

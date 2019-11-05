@@ -161,7 +161,7 @@
                                         "",
                                         [
                                             "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Prepare-Box.ps1",
-                                            " -LocalAdminPassword ", { "Ref" : "LocalAdminPassword" }, " -ProxyIP 127.0.0.2 > C:\\log.txt"
+                                            " -LocalAdminPassword ", { "Ref" : "LocalAdminPassword" }, " >> C:\\log.txt"
                                         ]
                                     ]
                                 },
@@ -173,23 +173,23 @@
                                         "",
                                         [
                                             "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Set-StaticIP.ps1",
-                                            " -ServerAddresses 8.8.8.8"
+                                            " -ServerAddresses 8.8.8.8", " >> C:\\log.txt"
                                         ]
                                     ]
                                 },
-                                "waitAfterCompletion": "10"
+                                "waitAfterCompletion": "0"
                             },
-                            "c-configure-proxy": {
+                            "c-set-proxy": {
                                 "command": {
                                     "Fn::Join": [
                                         "",
                                         [
-                                            "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Configure-Proxy.ps1",
-                                            " -ProxyIP 127.0.0.1 "
+                                            "powershell.exe -ExecutionPolicy Bypass -Command c:\\cfn\\scripts\\Configure-Proxy.ps1",
+                                            " -ProxyIP 127.0.0.2 >> C:\\log.txt"
                                         ]
                                     ]
                                 },
-                                "waitAfterCompletion": "10"
+                                "waitAfterCompletion": "0"
                             },
                             "d-rename-computer-reboot": {
                                 "command": {
@@ -198,7 +198,7 @@
                                         [
                                             "powershell.exe -ExecutionPolicy RemoteSigned -Command c:\\cfn\\scripts\\Rename-Computer.ps1",
                                             " -NewComputerName ", { "Ref" : "Win10NetBIOSName" },
-                                            " -reboot"
+                                            " -reboot", " >> C:\\log.txt"
                                         ]
                                     ]
                                 },
