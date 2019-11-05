@@ -17,12 +17,12 @@ Write-Host "Setting the proxy server to $ProxyHost"
 Set-ItemProperty -Force -Path "HKLM:\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxySettingsPerUser" -Value 1 -Type dword
 Get-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxySettingsPerUser"
 
-Set-ItemProperty -Force -Path "HKU:\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyEnable" -Value 1 -Type dword
-Get-ItemProperty -Path "HKU:\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyEnable"
+Set-ItemProperty -Force -Path "Microsoft.PowerShell.Core\Registry::HKEY_USERS\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyEnable" -Value 1 -Type dword
+Get-ItemProperty -Path "Microsoft.PowerShell.Core\Registry::HKEY_USERS\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyEnable"
 
-Set-ItemProperty -Force -Path "HKU:\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect" -Value 0 -Type dword
-Get-ItemProperty -Path "HKU:\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect"
+Set-ItemProperty -Force -Path "Microsoft.PowerShell.Core\Registry::HKEY_USERS\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect" -Value 0 -Type dword
+Get-ItemProperty -Path "Microsoft.PowerShell.Core\Registry::HKEY_USERS\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "AutoDetect"
 
-Set-ItemProperty -Force -Path "HKU:\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer" -Value $ProxyHost
-Get-ItemProperty -Path "HKU:\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer"
+Set-ItemProperty -Force -Path "Microsoft.PowerShell.Core\Registry::HKEY_USERS\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer" -Value $ProxyHost
+Get-ItemProperty -Path "Microsoft.PowerShell.Core\Registry::HKEY_USERS\S-1-5-21-2036226717-1704707055-511440364-500\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxyServer"
 
